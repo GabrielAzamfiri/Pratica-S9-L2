@@ -2,18 +2,31 @@ import { Component } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import fantasy from "../data/books/fantasy.json";
+import horror from "../data/books/horror.json"
+import history from "../data/books/history.json"
+import scifi from "../data/books/scifi.json"
+import romance from "../data/books/romance.json"
 import { Row, Col } from "react-bootstrap";
-import TopBar from "./TopBar";
-console.log(TopBar)
+
+
+
+//  this.state.books.filter(x=>x.category===this.props.category).map()
+
 class AllTheBooks extends Component  {
-  state = {
-    category: fantasy
-  };
+    state={
+        horror:[...horror],
+        history:[...history] ,
+        scifi: [...scifi],
+        fantasy:[...fantasy],
+        romance:[...romance] 
+    }
+  
   render() {
     return (
       <Row>
-        {this.state.category.map(book => {
-            console.log(book)
+        {/* faccio il map su state[nome array passato tramite props] */}
+        {this.state[`${this.props.category}`].map(book => {
+            
           return (
             <Col sm={4} md={3} lg={2} key={`book-${book.asin}`}>
               <Card >
