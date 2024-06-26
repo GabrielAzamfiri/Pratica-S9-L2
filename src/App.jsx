@@ -14,15 +14,15 @@ class App extends Component {
     categoria: "fantasy",
   };
   
+  // funzione che modifica lo state categoria grazie al eventKey
+  selectCategory = eventKey => {
+   this.setState({ categoria: eventKey })
+   };
   render() {
-    // funzione che modifica lo state categoria grazie al eventKey
-   const  selectCategory = eventKey => {
-    this.setState({ categoria: eventKey })
-    };
     return (
       <div className="App">
         {/* do la funzione selectCategory come props cosi da chiamarla dentro TopBar e farle avere eventKey come dato */}
-        <TopBar setCategory={selectCategory} />
+        <TopBar setCategory={this.selectCategory} />
         <Welcome />
         {/* passo come props lo state.catogoria cosi da avere l'array di film in base alla selezione del dropdown */}
         <AllTheBooks category={this.state.categoria} />
